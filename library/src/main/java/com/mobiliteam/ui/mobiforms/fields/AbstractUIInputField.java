@@ -80,6 +80,11 @@ public class AbstractUIInputField extends AbstractUIField {
         this.editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(validationType.getLength())});
     }
 
+    protected void resetInputType() {
+        validationType.setInputType(controlInputType);
+        this.editText.setInputType(validationType.getInputType());
+    }
+
     public String getHint() {
         return hint;
     }
