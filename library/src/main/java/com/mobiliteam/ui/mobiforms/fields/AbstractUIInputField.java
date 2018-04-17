@@ -16,6 +16,7 @@ public class AbstractUIInputField extends AbstractUIField {
 
     private EditText editText;
     protected ValidationType validationType;
+    protected int controlInputType;
     protected String hint;
 
     public AbstractUIInputField(String key, EditText editText, ValidationType validationType, String errorMsg) {
@@ -23,6 +24,7 @@ public class AbstractUIInputField extends AbstractUIField {
         this.editText = editText;
         this.validationType = validationType;
         this.errorMsg = errorMsg;
+        controlInputType = editText.getInputType();
         render();
     }
 

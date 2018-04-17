@@ -19,7 +19,7 @@ public class EditTextField extends AbstractUIInputField {
     public EditTextField(String key, EditText editText, EValidationType validationType, String errorMsg) {
         this(key, editText, validationType.get(), errorMsg != null ? errorMsg : validationType.errorMsg());
         if (validationType == EValidationType.Default) {
-            super.validationType.setInputType(editText.getInputType());
+            super.validationType.setInputType(controlInputType);
         }
     }
 
