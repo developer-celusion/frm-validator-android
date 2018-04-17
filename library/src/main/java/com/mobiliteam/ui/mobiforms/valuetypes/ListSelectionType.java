@@ -1,4 +1,4 @@
-package com.celusion.library.mobiforms.valuetypes;
+package com.mobiliteam.ui.mobiforms.valuetypes;
 
 /**
  * Created by swapnilnandgave on 10/04/18.

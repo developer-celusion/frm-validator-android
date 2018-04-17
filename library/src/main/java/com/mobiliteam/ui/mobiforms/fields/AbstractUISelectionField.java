@@ -1,9 +1,9 @@
-package com.celusion.library.mobiforms.fields;
+package com.mobiliteam.ui.mobiforms.fields;
 
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-import com.celusion.library.mobiforms.valuetypes.ValueSelectionType;
+import com.mobiliteam.ui.mobiforms.valuetypes.ValueSelectionType;
 
 /**
  * Created by swapnilnandgave on 09/04/18.

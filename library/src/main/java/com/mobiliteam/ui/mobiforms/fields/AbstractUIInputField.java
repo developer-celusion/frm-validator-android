@@ -1,10 +1,10 @@
-package com.celusion.library.mobiforms.fields;
+package com.mobiliteam.ui.mobiforms.fields;
 
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.widget.EditText;
 
-import com.celusion.library.mobiforms.valuetypes.ValidationType;
+import com.mobiliteam.ui.mobiforms.valuetypes.ValidationType;
 
 import java.util.regex.Pattern;
 
@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class AbstractUIInputField extends AbstractUIField {
 
     private EditText editText;
-    private ValidationType validationType;
+    protected ValidationType validationType;
     protected String hint;
 
     public AbstractUIInputField(String key, EditText editText, ValidationType validationType, String errorMsg) {
@@ -61,7 +61,7 @@ public class AbstractUIInputField extends AbstractUIField {
         } else {
             status = text.length() <= validationType.getLength();
         }
-        if(!status) {
+        if (!status) {
             showError();
         }
         return status;

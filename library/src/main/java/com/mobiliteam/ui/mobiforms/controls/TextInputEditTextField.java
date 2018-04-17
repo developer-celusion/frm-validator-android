@@ -1,11 +1,11 @@
-package com.celusion.library.mobiforms.controls;
+package com.mobiliteam.ui.mobiforms.controls;
 
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.ViewParent;
 
-import com.celusion.library.mobiforms.valuetypes.EValidationType;
-import com.celusion.library.mobiforms.valuetypes.ValidationType;
+import com.mobiliteam.ui.mobiforms.valuetypes.EValidationType;
+import com.mobiliteam.ui.mobiforms.valuetypes.ValidationType;
 
 /**
  * Created by swapnilnandgave on 09/04/18.

@@ -1,28 +1,24 @@
-package com.celusion.wagongitexample;
+package com.mobiliteam.wagongitexample;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.celusion.library.AwesomeConvertor;
-import com.celusion.library.mobiforms.UIFormValidator;
-import com.celusion.library.mobiforms.controls.CheckBoxField;
-import com.celusion.library.mobiforms.controls.CheckBoxListField;
-import com.celusion.library.mobiforms.controls.EditTextField;
-import com.celusion.library.mobiforms.controls.RadioGroupField;
-import com.celusion.library.mobiforms.controls.SpinnerField;
-import com.celusion.library.mobiforms.listeners.IFormValidation;
-import com.celusion.library.mobiforms.valuetypes.EValidationType;
-import com.celusion.library.mobiforms.valuetypes.ListSelectionType;
-import com.celusion.library.mobiforms.valuetypes.ValueSelectionType;
-import com.celusion.wagongitexample.databinding.ActivityMainBinding;
+import com.mobiliteam.ui.mobiforms.UIFormValidator;
+import com.mobiliteam.ui.mobiforms.controls.CheckBoxField;
+import com.mobiliteam.ui.mobiforms.controls.CheckBoxListField;
+import com.mobiliteam.ui.mobiforms.controls.EditTextField;
+import com.mobiliteam.ui.mobiforms.controls.RadioGroupField;
+import com.mobiliteam.ui.mobiforms.controls.SpinnerField;
+import com.mobiliteam.ui.mobiforms.listeners.IFormValidation;
+import com.mobiliteam.ui.mobiforms.valuetypes.EValidationType;
+import com.mobiliteam.ui.mobiforms.valuetypes.ListSelectionType;
+import com.mobiliteam.ui.mobiforms.valuetypes.ValueSelectionType;
+import com.mobiliteam.wagongitexample.databinding.ActivityMainBinding;
 
 import org.json.JSONObject;
 

@@ -1,9 +1,7 @@
-package com.celusion.library.mobiforms.valuetypes;
+package com.mobiliteam.ui.mobiforms.valuetypes;
 
 import android.text.InputType;
 import android.util.Patterns;
-
-import com.celusion.library.mobiforms.valuetypes.ValidationType;
 
 /**
  * Created by swapnilnandgave on 04/04/18.
@@ -92,7 +90,7 @@ public enum EValidationType {
                 errorMsg = "Input valid aadhar no";
                 break;
             case Default:
-
+                errorMsg = "Input valid text";
                 break;
         }
         return errorMsg;

@@ -1,4 +1,4 @@
-package com.celusion.wagongitexample;
+package com.mobiliteam.wagongitexample;
 
 import android.app.ProgressDialog;
 import android.content.Context;

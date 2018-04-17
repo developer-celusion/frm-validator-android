@@ -1,4 +1,4 @@
-<manifest package="com.celusion.library"
+<manifest package="com.mobiliteam.ui"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
