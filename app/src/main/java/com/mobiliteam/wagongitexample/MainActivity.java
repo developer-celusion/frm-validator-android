@@ -60,14 +60,15 @@ public class MainActivity extends CommonActivity {
     private void validateOwn() {
         final UIFormValidator formValidator = new UIFormValidator(this);
 
-        formValidator.check(new CheckBoxListField("checkboxlisttest", dataBinding.linechecks, "Choose All Checkboxes", ListSelectionType.AllSelected, ValueSelectionType.TextOnly));
-        formValidator.check(new CheckBoxField("checkboxitemtest", dataBinding.checkboxItem, "Select Check Me", ValueSelectionType.ItemOnly));
-        formValidator.check(new EditTextField("personnametest", dataBinding.edittextName, EValidationType.PersonName));
-        formValidator.check(new EditTextField("mobiletest", dataBinding.edittextMobile, EValidationType.Mobile));
-        formValidator.check(new RadioGroupField("radiogrptest", dataBinding.radiogroupTest, "Select radio buton in radiogroup", ValueSelectionType.TagOnly));
-        formValidator.check(new SpinnerField("spinnertest1", dataBinding.spinnerSource, "Select spinner item 1", ValueSelectionType.ItemOnly));
-        formValidator.optional(new SpinnerField("spinnertest2", dataBinding.spinnerSubsource, "Select spinner item 2", ValueSelectionType.TextOnly));
-        formValidator.optional(new SpinnerField("spinneroptionaltest", dataBinding.spinnerCampaign, "Optional message", ValueSelectionType.ItemOnly));
+        //formValidator.check(new CheckBoxListField("checkboxlisttest", dataBinding.linechecks, "Choose All Checkboxes", ListSelectionType.AllSelected, ValueSelectionType.TextOnly));
+        //formValidator.check(new CheckBoxField("checkboxitemtest", dataBinding.checkboxItem, "Select Check Me", ValueSelectionType.ItemOnly));
+        //formValidator.check(new EditTextField("personnametest", dataBinding.edittextName, EValidationType.PersonName));
+        formValidator.check(new EditTextField("personage", dataBinding.edittextName, EValidationType.Age));
+        //formValidator.check(new EditTextField("mobiletest", dataBinding.edittextMobile, EValidationType.Mobile));
+        //formValidator.check(new RadioGroupField("radiogrptest", dataBinding.radiogroupTest, "Select radio buton in radiogroup", ValueSelectionType.TagOnly));
+        //formValidator.check(new SpinnerField("spinnertest1", dataBinding.spinnerSource, "Select spinner item 1", ValueSelectionType.ItemOnly));
+        //formValidator.optional(new SpinnerField("spinnertest2", dataBinding.spinnerSubsource, "Select spinner item 2", ValueSelectionType.TextOnly));
+        //formValidator.optional(new SpinnerField("spinneroptionaltest", dataBinding.spinnerCampaign, "Optional message", ValueSelectionType.ItemOnly));
 
         dataBinding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
