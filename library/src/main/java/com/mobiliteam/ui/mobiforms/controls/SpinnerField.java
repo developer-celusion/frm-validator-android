@@ -69,30 +69,4 @@ public class SpinnerField extends AbstractUISelectionField {
         return key;
     }
 
-    public Object getFieldValue(Object sourceObject, String fieldName) {
-        Field field;
-        try {
-            field = sourceObject.getClass().getDeclaredField(fieldName);
-        } catch (NoSuchFieldException e) {
-            field = null;
-        }
-        Class superClass = sourceObject.getClass().getSuperclass();
-        while (field == null && superClass != null) {
-            try {
-                field = superClass.getDeclaredField(fieldName);
-            } catch (NoSuchFieldException e) {
-                superClass = superClass.getSuperclass();
-            }
-        }
-        if (field == null) {
-            return null;
-        }
-        field.setAccessible(true);
-        try {
-            return field.get(sourceObject);
-        } catch (IllegalAccessException e) {
-            return null;
-        }
-    }
-
 }

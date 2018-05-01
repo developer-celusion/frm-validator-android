@@ -7,6 +7,7 @@ import com.mobiliteam.ui.mobiforms.controls.CheckBoxListField;
 import com.mobiliteam.ui.mobiforms.controls.EditTextField;
 import com.mobiliteam.ui.mobiforms.controls.RadioGroupField;
 import com.mobiliteam.ui.mobiforms.controls.SpinnerField;
+import com.mobiliteam.ui.mobiforms.controls.StaticUIField;
 import com.mobiliteam.ui.mobiforms.controls.TextInputEditTextField;
 import com.mobiliteam.ui.mobiforms.fields.AbstractUIField;
 import com.mobiliteam.ui.mobiforms.listeners.IFormValidation;
@@ -95,6 +96,17 @@ public class UIFormValidator {
 
     public UIFormValidator optional(CheckBoxListField selectionField) {
         check(selectionField);
+        setAsOptional();
+        return this;
+    }
+
+    public UIFormValidator check(StaticUIField staticUIField) {
+        validationFields.add(staticUIField);
+        return this;
+    }
+
+    public UIFormValidator optional(StaticUIField staticUIField) {
+        check(staticUIField);
         setAsOptional();
         return this;
     }
