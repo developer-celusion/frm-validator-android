@@ -9,6 +9,7 @@ public enum ValueSelectionType {
     IndexOnly,
     ItemOnly,
     TextOnly,
-    TagOnly
+    TagOnly,
+    PropertyOnly
 
 }

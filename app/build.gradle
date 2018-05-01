@@ -8,8 +8,8 @@ android {
         applicationId "com.celusion.wagongitexample"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 8
-        versionName "0.1.8"
+        versionCode 9
+        versionName "0.1.9"
     }
     buildTypes {
         release {
