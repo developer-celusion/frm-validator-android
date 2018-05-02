@@ -11,7 +11,11 @@ import com.mobiliteam.ui.mobiforms.controls.StaticUIField;
 import com.mobiliteam.ui.mobiforms.controls.TextInputEditTextField;
 import com.mobiliteam.ui.mobiforms.fields.AbstractUIField;
 import com.mobiliteam.ui.mobiforms.listeners.IFormValidation;
+import com.mobiliteam.ui.mobiforms.listeners.IRuleValidation;
 import com.mobiliteam.ui.mobiforms.listeners.IValidationField;
+import com.mobiliteam.ui.mobiforms.rules.AbstractFormRule;
+import com.mobiliteam.ui.mobiforms.rules.FormRule;
+import com.mobiliteam.ui.mobiforms.rules.SumFormRule;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -27,11 +31,13 @@ public class UIFormValidator {
     private Context context;
     private List<AbstractUIField> validationFields;
     private List<Integer> optionalIndexes;
+    private List<AbstractFormRule> validationRules;
 
     public UIFormValidator(Context context) {
         this.context = context;
         validationFields = new ArrayList<>();
         optionalIndexes = new ArrayList<>();
+        validationRules = new ArrayList<>();
     }
 
     public UIFormValidator check(EditTextField inputField) {
@@ -111,6 +117,16 @@ public class UIFormValidator {
         return this;
     }
 
+    public UIFormValidator addRule(FormRule formRule) {
+        validationRules.add(formRule);
+        return this;
+    }
+
+    public UIFormValidator addRule(SumFormRule formRule) {
+        validationRules.add(formRule);
+        return this;
+    }
+
     private void setAsOptional() {
         optionalIndexes.add(validationFields.size() - 1);
     }
@@ -140,7 +156,21 @@ public class UIFormValidator {
         if (statuses.size() > 0) {
             formValidation.errorWith(errorMsg);
         } else {
-            formValidation.successWith(linkedHashMap);
+            for (int i = 0; i < validationRules.size(); i++) {
+                IRuleValidation ruleValidation = validationRules.get(i);
+                boolean valid = ruleValidation.validate(linkedHashMap);
+                if (!valid) {
+                    statuses.add(valid);
+                    if (errorMsg == null) {
+                        errorMsg = ruleValidation.getErrorMsg();
+                    }
+                }
+            }
+            if (statuses.size() > 0) {
+                formValidation.errorWith(errorMsg);
+            } else {
+                formValidation.successWith(linkedHashMap);
+            }
         }
     }
 
