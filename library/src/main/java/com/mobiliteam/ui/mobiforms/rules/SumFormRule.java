@@ -24,6 +24,7 @@ public class SumFormRule extends AbstractFormRule {
     }
 
     public SumFormRule(AbstractUIField sourceField, String errorMsg, EFormRuleType ruleType, AbstractUIField... rightSideFields) {
+        this.leftSideFields = new ArrayList<>();
         this.leftSideFields.add(sourceField);
         this.rightSideFields = new ArrayList<>(Arrays.asList(rightSideFields));
         this.errorMsg = errorMsg;
@@ -31,6 +32,8 @@ public class SumFormRule extends AbstractFormRule {
     }
 
     public SumFormRule(AbstractUIField sourceField, AbstractUIField destinationField, EFormRuleType ruleType, String errorMsg) {
+        this.leftSideFields = new ArrayList<>();
+        this.rightSideFields = new ArrayList<>();
         this.leftSideFields.add(sourceField);
         this.rightSideFields.add(destinationField);
         this.errorMsg = errorMsg;
