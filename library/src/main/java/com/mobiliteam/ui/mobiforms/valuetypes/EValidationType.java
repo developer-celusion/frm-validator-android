@@ -15,7 +15,8 @@ public enum EValidationType {
     PANCard,
     PersonName,
     Aadhar,
-    Age;
+    Age,
+    Pincode;
 
     public ValidationType get() {
         ValidationType validationType = new ValidationType(100);
@@ -67,6 +68,13 @@ public enum EValidationType {
                 validationType.setLength(2);
                 validationType.setLines(1);
                 break;
+            case Pincode:
+                //^([0-9]{6}|[0-9]{3}\s[0-9]{3})$
+                validationType.setInputType(InputType.TYPE_CLASS_NUMBER);
+                validationType.setPattern("^[0-9]{6}$");
+                validationType.setLength(6);
+                validationType.setLines(1);
+                break;
             case Default:
                 validationType.setInputType(InputType.TYPE_CLASS_TEXT);
                 validationType.setPattern("^.{1,100}$");
@@ -98,6 +106,9 @@ public enum EValidationType {
                 break;
             case Age:
                 errorMsg = "Input valid age";
+                break;
+            case Pincode:
+                errorMsg = "Input valid pincode";
                 break;
             case Default:
                 errorMsg = "Input valid text";
