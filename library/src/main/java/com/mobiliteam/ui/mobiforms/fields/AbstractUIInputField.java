@@ -55,6 +55,7 @@ public class AbstractUIInputField extends AbstractUIField {
 
     @Override
     public boolean validate() {
+        resetError();
         boolean status;
         final String text = getValue();
         if (!TextUtils.isEmpty(validationType.getPattern())) {
