@@ -27,26 +27,28 @@ public class RadioGroupField extends AbstractUISelectionField {
                 break;
             }
         }
-        this.radioGroup.setOnCheckedChangeListener(itemChangedListener);
+        //this.radioGroup.setOnCheckedChangeListener(itemChangedListener);
     }
 
-    private RadioGroup.OnCheckedChangeListener itemChangedListener = new RadioGroup.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(RadioGroup radioGroup, int checkedItemId) {
-            selectedRadioButton = (RadioButton) radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
-        }
-    };
+//    private RadioGroup.OnCheckedChangeListener itemChangedListener = new RadioGroup.OnCheckedChangeListener() {
+//        @Override
+//        public void onCheckedChanged(RadioGroup radioGroup, int checkedItemId) {
+//            selectedRadioButton = (RadioButton) radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+//        }
+//    };
 
     @Override
     public Object getValue() {
         Object object = null;
-        switch (valueSelectionType) {
-            case TagOnly:
-                object = selectedRadioButton.getTag();
-                break;
-            default:
-                object = selectedRadioButton.getText().toString();
-                break;
+        if (selectedRadioButton != null) {
+            switch (valueSelectionType) {
+                case TagOnly:
+                    object = selectedRadioButton.getTag();
+                    break;
+                default:
+                    object = selectedRadioButton.getText().toString();
+                    break;
+            }
         }
         return object;
     }
@@ -58,6 +60,7 @@ public class RadioGroupField extends AbstractUISelectionField {
 
     @Override
     public boolean validate() {
+        checkSelected();
         boolean status = (selectedRadioButton != null && !TextUtils.isEmpty(selectedRadioButton.getText()));
 //        if(!status) {
 //            showError();
@@ -69,4 +72,14 @@ public class RadioGroupField extends AbstractUISelectionField {
     public String getKey() {
         return key;
     }
+
+    private void checkSelected() {
+        final int selected = this.radioGroup.getCheckedRadioButtonId();
+        if (selected != -1) {
+            selectedRadioButton = this.radioGroup.findViewById(selected);
+        } else {
+            selectedRadioButton = null;
+        }
+    }
+
 }
