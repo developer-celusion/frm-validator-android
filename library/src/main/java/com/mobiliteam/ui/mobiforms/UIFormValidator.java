@@ -45,6 +45,11 @@ public class UIFormValidator {
         return this;
     }
 
+    public UIFormValidator uncheck(EditTextField selectionField) {
+        remove(selectionField);
+        return this;
+    }
+
     public UIFormValidator optional(EditTextField inputField) {
         check(inputField);
         setAsOptional();
@@ -53,6 +58,11 @@ public class UIFormValidator {
 
     public UIFormValidator check(TextInputEditTextField inputField) {
         validationFields.add(inputField);
+        return this;
+    }
+
+    public UIFormValidator uncheck(TextInputEditTextField selectionField) {
+        remove(selectionField);
         return this;
     }
 
@@ -67,6 +77,11 @@ public class UIFormValidator {
         return this;
     }
 
+    public UIFormValidator uncheck(RadioGroupField selectionField) {
+        remove(selectionField);
+        return this;
+    }
+
     public UIFormValidator optional(RadioGroupField selectionField) {
         check(selectionField);
         setAsOptional();
@@ -78,6 +93,11 @@ public class UIFormValidator {
         return this;
     }
 
+    public UIFormValidator uncheck(CheckBoxField selectionField) {
+        remove(selectionField);
+        return this;
+    }
+
     public UIFormValidator optional(CheckBoxField selectionField) {
         check(selectionField);
         setAsOptional();
@@ -86,6 +106,11 @@ public class UIFormValidator {
 
     public UIFormValidator check(SpinnerField selectionField) {
         validationFields.add(selectionField);
+        return this;
+    }
+
+    public UIFormValidator uncheck(SpinnerField selectionField) {
+        remove(selectionField);
         return this;
     }
 
@@ -113,6 +138,11 @@ public class UIFormValidator {
 
     public UIFormValidator check(StaticUIField staticUIField) {
         validationFields.add(staticUIField);
+        return this;
+    }
+
+    public UIFormValidator uncheck(StaticUIField selectionField) {
+        remove(selectionField);
         return this;
     }
 
