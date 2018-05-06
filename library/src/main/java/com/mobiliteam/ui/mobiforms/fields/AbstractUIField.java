@@ -15,4 +15,8 @@ public abstract class AbstractUIField implements IValidationField {
         this.key = key;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return this.key.equalsIgnoreCase(((AbstractUIField) obj).getKey());
+    }
 }

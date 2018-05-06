@@ -30,13 +30,13 @@ public class UIFormValidator {
 
     private Context context;
     private List<AbstractUIField> validationFields;
-    private List<Integer> optionalIndexes;
+    private List<AbstractUIField> optionalFields;
     private List<AbstractFormRule> validationRules;
 
     public UIFormValidator(Context context) {
         this.context = context;
         validationFields = new ArrayList<>();
-        optionalIndexes = new ArrayList<>();
+        optionalFields = new ArrayList<>();
         validationRules = new ArrayList<>();
     }
 
@@ -100,6 +100,11 @@ public class UIFormValidator {
         return this;
     }
 
+    public UIFormValidator uncheck(CheckBoxListField selectionField) {
+        remove(selectionField);
+        return this;
+    }
+
     public UIFormValidator optional(CheckBoxListField selectionField) {
         check(selectionField);
         setAsOptional();
@@ -128,7 +133,7 @@ public class UIFormValidator {
     }
 
     private void setAsOptional() {
-        optionalIndexes.add(validationFields.size() - 1);
+        optionalFields.add(validationFields.get(validationFields.size() - 1));
     }
 
     public void validate(IFormValidation formValidation) {
@@ -138,7 +143,7 @@ public class UIFormValidator {
         for (int i = 0; i < validationFields.size(); i++) {
             IValidationField uiField = validationFields.get(i);
             boolean valid;
-            if (isOptional(i)) {
+            if (isOptional(uiField)) {
                 valid = true;
             } else {
                 valid = uiField.validate();
@@ -174,16 +179,40 @@ public class UIFormValidator {
         }
     }
 
-    private boolean isOptional(int i) {
+    private boolean isOptional(IValidationField field) {
         boolean status = false;
-        for (Integer index : optionalIndexes) {
-            status = (index.intValue() == i);
+        for (IValidationField validationField : optionalFields) {
+            status = (validationField == field);
             if (status) {
                 break;
             }
         }
         return status;
     }
+
+    private void remove(IValidationField field) {
+        try {
+            validationFields.remove(field);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            optionalFields.remove(field);
+        } catch (Exception e) {
+
+        }
+    }
+
+//    private boolean isOptional(int i) {
+//        boolean status = false;
+//        for (Integer index : optionalIndexes) {
+//            status = (index.intValue() == i);
+//            if (status) {
+//                break;
+//            }
+//        }
+//        return status;
+//    }
 
     public boolean setField(Object targetObject, String fieldName, Object fieldValue) {
         Field field;
