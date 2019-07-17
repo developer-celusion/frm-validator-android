@@ -10,6 +10,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -17,16 +18,14 @@ allprojects {
     repositories {
         jcenter()
 
-//        maven {
-//            credentials {
-//                username USERNAME
-//                password PASSWORD
-//            }
-//            url "https://api.bitbucket.org/1.0/repositories/swapnil_celusion/maven_repository/raw/releases"
-//        }
         maven {
             url 'https://maven.google.com/'
             name 'Google'
+        }
+
+        maven {
+            url "https://jitpack.io"
+            credentials { username authToken }
         }
     }
 }

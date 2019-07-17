@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-apply from: 'publish-bitbucket.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.developer-celusion'
 
 android {
     compileSdkVersion 26
@@ -8,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 18
-        versionName "0.2.8"
+        versionCode 30
+        versionName "0.3.0"
     }
 }
 
