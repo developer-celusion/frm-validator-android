@@ -1,10 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.developer-celusion'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+def packageName = 'com.mobiliteam'
+def libraryVersion = '0.3.0'
+def appId = 'frmvalidatorrepo'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "26.0.3"
 
     defaultConfig {
         minSdkVersion 14
@@ -19,4 +23,45 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support:design:26.1.0'
 
+}
+
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId packageName
+            version = libraryVersion
+            artifactId appId
+
+            // Tell maven to prepare the generated "*.aar" file for publishing
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+        }
+    }
+}
+
+artifactory {
+    contextUrl = artifactory_contextUrl
+    //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'mobiliteamrepo'
+            username = artifactory_user
+            password = artifactory_password
+
+        }
+
+        defaults {
+            // Tell the Artifactory Plugin which artifacts should be published to Artifactory.
+            publications('aar')
+
+            // Properties to be attached to the published artifacts.
+            properties = ['qa.level': 'basic', 'dev.team': 'core']
+            // Publish generated POM files to Artifactory (true by default)
+            publishBuildInfo = true   //Publish build-info to Artifactory (true by default)
+            publishArtifacts = true   //Publish artifacts to Artifactory (true by default)
+            publishPom = true   //Publish generated POM files to Artifactory (true by default).
+            publishIvy = true
+            //Publish generated Ivy descriptor files to Artifactory (true by default).
+        }
+    }
 }
